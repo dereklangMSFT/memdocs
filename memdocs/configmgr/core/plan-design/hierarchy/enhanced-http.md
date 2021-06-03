@@ -21,15 +21,11 @@ manager: dougeby
 > [!Tip]  
 > This feature was first introduced in version 1806 as a [pre-release feature](../../servers/manage/pre-release-features.md). Beginning with version 1810, this feature is no longer a pre-release feature.  
 
-Microsoft recommends using HTTPS communication for all Configuration Manager communication paths, but it's challenging for some customers due to the overhead of managing PKI certificates.
+Enhanced HTTP secures sensitive client communication without the need for PKI authentication certificates. When you enable Enhanced HTTP, the site server automatically issues certificates to each site system, allowing them to communicate using a secure channel. Clients are issued certificates by the Management Points.
 
-Configuration Manager version 1806 includes improvements to how clients communicate with site systems. There are two primary goals for these improvements:  
+Starting with Configuration Manager version 1806, clients can securely access content from distribution points without the need for a network access account, client PKI certificate, and Windows authentication.  
 
-- You can secure sensitive client communication without the need for PKI server authentication certificates.  
-
-- Clients can securely access content from distribution points without the need for a network access account, client PKI certificate, and Windows authentication.  
-
-All other client communication is over HTTP. Enhanced HTTP isn't the same as enabling HTTPS for client communication or a site system.<!-- SCCMDocs issue #1212 -->
+All other client communication is over HTTP. Microsoft recommends using HTTPS communication for all Configuration Manager communication paths, but it's challenging for some customers due to the overhead of managing PKI certificates. <!-- SCCMDocs issue #1212 -->
 
 > [!Note]  
 > PKI certificates are still a valid option for customers with the following requirements:  
@@ -87,9 +83,7 @@ The following Configuration Manager features support or require enhanced HTTP:
 
 - A distribution point configured for HTTP client connections. Set this option on the **Communication** tab of the distribution point role properties. Don't enable the option to **Allow clients to connect anonymously**.  
 
-- [Onboard the site](../../clients/manage/cmg/configure-azure-ad.md) to Azure AD for cloud management.  
-
-- *For [Scenario 3](#bkmk_scenario3) only*: A client running Windows 10 version 1803 or later, and joined to Azure AD. The client requires this configuration for Azure AD device authentication.<!-- SCCMDocs issue 1126 -->
+- For Azure AD device authentication: A client running Windows 10 version 1803 or later, and joined to Azure AD
 
 
 ## Configure the site
