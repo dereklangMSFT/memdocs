@@ -78,11 +78,11 @@ Publish your PKI's certificate revocation list (CRL) for internet-based clients 
 
 This CMG option verifies the client authentication certificate.
 
-- If the client is using Azure AD or Configuration Manager token-based authentication, the CRL doesn't matter.
+- If the client is using Azure AD or Enhanced HTTP (Configuration Manager token-based authentication), the CRL doesn't matter.
 
 - If you use PKI, and externally publish the CRL, then enable this option (recommended).
 
-- If you use PKI, don't publish the CRL, then disable this option.
+- If you use PKI, and do not externally publish the CRL, then disable this option.
 
 - If you misconfigure this option, it can cause more traffic from clients to the CMG. This traffic can increase the Azure egress data, which can increase your Azure costs.<!-- SCCMDocs#1434 -->
 
